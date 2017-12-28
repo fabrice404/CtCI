@@ -5,7 +5,7 @@ using System.Text;
 namespace CtCI
 {
     // Arrays and Strings (page 90)
-    public class Chapter1
+    public class Chapter01
     {
         // 1.1 Is Unique
         public bool Question01(string input)

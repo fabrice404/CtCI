@@ -184,5 +184,25 @@ namespace CtCI
 
             return result;
         }
+
+        // 2.8 Loop Detection
+        public LinkedListNode Question08(LinkedListNode head)
+        {
+            var list = new List<LinkedListNode>();
+            var current = head;
+            while (current != null)
+            {
+                if (list.Contains(current))
+                {
+                    return current;
+                }
+                else
+                {
+                    list.Add(current);
+                    current = current.next;
+                }
+            }
+            return null;
+        }
     }
 }

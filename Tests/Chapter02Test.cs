@@ -129,5 +129,20 @@ namespace CtCI
 
             Assert.AreEqual(l3, chapter02.Question07(l1, l2));
         }
+
+        [TestCase]
+        public void Question08()
+        {
+            var chapter02 = new Chapter02();
+
+            var loopStart = new LinkedListNode(6);
+            loopStart.AddNode(7).AddNode(8).AddNode(9).next = loopStart;
+
+            var head = new LinkedListNode(1);
+            head.AddNode(2).AddNode(3).AddNode(4).AddNode(5);
+            head.next = loopStart;
+
+            Assert.AreEqual(loopStart, chapter02.Question08(head));
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace CtCI
 {
@@ -48,5 +49,109 @@ namespace CtCI
             node.next = node.next.next;
         }
 
+        // 2.4 Partition
+        public LinkedListNode Question04(LinkedListNode head, int x)
+        {
+            var current = head;
+            LinkedListNode left0 = null,
+                leftN = null,
+                right0 = null,
+                rightN = null;
+
+            while (current != null)
+            {
+                int data = current.data;
+                if (data >= x)
+                {
+                    if (right0 == null)
+                    {
+                        right0 = new LinkedListNode(data);
+                        rightN = right0;
+                    }
+                    else
+                    {
+                        rightN = rightN.AddNode(data);
+                    }
+                }
+                else
+                {
+                    if (left0 == null)
+                    {
+                        left0 = new LinkedListNode(data);
+                        leftN = left0;
+                    }
+                    else
+                    {
+                        leftN = leftN.AddNode(data);
+                    }
+                }
+                current = current.next;
+            }
+
+            if (left0 == null)
+            {
+                return right0;
+            }
+            else
+            {
+                leftN.next = right0;
+                return left0;
+            }
+        }
+
+        // 2.5 Sum Lists
+        public int Question05(LinkedListNode l1, LinkedListNode l2, bool leftToRight = false)
+        {
+            string ListToString(LinkedListNode head, bool ltr)
+            {
+                var result = new StringBuilder();
+                var current = head;
+                while (current != null)
+                {
+                    if (ltr)
+                    {
+                        result.Append(current.data);
+                    }
+                    else
+                    {
+                        result.Insert(0, current.data);
+                    }
+                    current = current.next;
+                }
+                return result.ToString();
+            }
+            return int.Parse(ListToString(l1, leftToRight)) + int.Parse(ListToString(l2, leftToRight));
+        }
+
+        // 2.6 Palindrome
+        public bool Question06(LinkedListNode head)
+        {
+            if (head == null)
+            {
+                return false;
+            }
+
+            var stack = new Stack<int>();
+            var current = head;
+
+            while (current != null)
+            {
+                stack.Push(current.data);
+                current = current.next;
+            }
+
+            current = head;
+
+            while (current != null)
+            {
+                if (stack.Count == 0 || current.data != stack.Pop())
+                {
+                    return false;
+                }
+                current = current.next;
+            }
+
+            return stack.Count == 0;
+        }
     }
 }

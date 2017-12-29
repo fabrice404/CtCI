@@ -40,5 +40,22 @@ namespace CtCI
             Assert.AreEqual(8, chapter02.Question02(root, 1).data);
             Assert.AreEqual(2, chapter02.Question02(root, 7).data);
         }
+
+        [TestCase]
+        public void Question03()
+        {
+            Chapter02 chapter02 = new Chapter02();
+            LinkedListNode root = new LinkedListNode(1);
+            LinkedListNode middle = root.AddNode(2).AddNode(3).AddNode(4).AddNode(5);
+            middle.AddNode(6).AddNode(7).AddNode(8).AddNode(9);
+
+            Assert.AreEqual(5, middle.data);
+            Assert.AreEqual(6, middle.next.data);
+
+            chapter02.Question03(middle);
+
+            Assert.AreEqual(6, middle.data);
+            Assert.AreEqual(7, middle.next.data);
+        }
     }
 }

@@ -40,5 +40,13 @@ namespace CtCI
 
             return current;
         }
+
+        // 2.3 Delete Middle Node
+        public void Question03(LinkedListNode node)
+        {
+            node.data = node.next.data;
+            node.next = node.next.next;
+        }
+
     }
 }

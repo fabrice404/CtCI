@@ -9,8 +9,8 @@ namespace CtCI
         [TestCase]
         public void Question01()
         {
-            Chapter02 chapter02 = new Chapter02();
-            LinkedListNode head = new LinkedListNode(1);
+            var chapter02 = new Chapter02();
+            var head = new LinkedListNode(1);
             head.AddNode(2).AddNode(3).AddNode(3).AddNode(4).AddNode(5);
 
             Assert.AreEqual(1, head.data);
@@ -32,8 +32,8 @@ namespace CtCI
         [TestCase]
         public void Question02()
         {
-            Chapter02 chapter02 = new Chapter02();
-            LinkedListNode head = new LinkedListNode(1);
+            var chapter02 = new Chapter02();
+            var head = new LinkedListNode(1);
             head.AddNode(2).AddNode(3).AddNode(4).AddNode(5)
                 .AddNode(6).AddNode(7).AddNode(8).AddNode(9);
 
@@ -44,9 +44,9 @@ namespace CtCI
         [TestCase]
         public void Question03()
         {
-            Chapter02 chapter02 = new Chapter02();
-            LinkedListNode head = new LinkedListNode(1);
-            LinkedListNode middle = head.AddNode(2).AddNode(3).AddNode(4).AddNode(5);
+            var chapter02 = new Chapter02();
+            var head = new LinkedListNode(1);
+            var middle = head.AddNode(2).AddNode(3).AddNode(4).AddNode(5);
             middle.AddNode(6).AddNode(7).AddNode(8).AddNode(9);
 
             Assert.AreEqual(5, middle.data);
@@ -61,8 +61,8 @@ namespace CtCI
         [TestCase]
         public void Question04()
         {
-            Chapter02 chapter02 = new Chapter02();
-            LinkedListNode head = new LinkedListNode(3);
+            var chapter02 = new Chapter02();
+            var head = new LinkedListNode(3);
             head.AddNode(5).AddNode(8).AddNode(5)
                 .AddNode(10).AddNode(2).AddNode(1);
 
@@ -81,10 +81,10 @@ namespace CtCI
         [TestCase]
         public void Question05()
         {
-            Chapter02 chapter02 = new Chapter02();
-            LinkedListNode l1 = new LinkedListNode(1);
+            var chapter02 = new Chapter02();
+            var l1 = new LinkedListNode(1);
             l1.AddNode(2).AddNode(3);
-            LinkedListNode l2 = new LinkedListNode(4);
+            var l2 = new LinkedListNode(4);
             l2.AddNode(5).AddNode(6);
 
             // 321 + 654 = 975
@@ -97,8 +97,8 @@ namespace CtCI
         [TestCase]
         public void Question06()
         {
-            Chapter02 chapter02 = new Chapter02();
-            LinkedListNode head = new LinkedListNode(1);
+            var chapter02 = new Chapter02();
+            var head = new LinkedListNode(1);
             head.AddNode(2).AddNode(3).AddNode(4).AddNode(5)
                 .AddNode(4).AddNode(3).AddNode(2).AddNode(1);
 
@@ -106,6 +106,28 @@ namespace CtCI
 
             head.AddNode(0);
             Assert.AreEqual(false, chapter02.Question06(head));
+        }
+
+        [TestCase]
+        public void Question07()
+        {
+            var chapter02 = new Chapter02();
+
+            var l1 = new LinkedListNode(1);
+            var last1 = l1.AddNode(2).AddNode(3).AddNode(4).AddNode(5);
+
+            var l2 = new LinkedListNode(6);
+            var last2 = l2.AddNode(7).AddNode(8).AddNode(9);
+
+            Assert.AreEqual(null, chapter02.Question07(l1, l2));
+
+            var l3 = new LinkedListNode(10);
+            l3.AddNode(11).AddNode(12).AddNode(13);
+
+            last1.next = l3;
+            last2.next = l3;
+
+            Assert.AreEqual(l3, chapter02.Question07(l1, l2));
         }
     }
 }

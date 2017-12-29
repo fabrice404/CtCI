@@ -153,5 +153,36 @@ namespace CtCI
 
             return stack.Count == 0;
         }
+
+        // 2.7 Intersection
+        public LinkedListNode Question07(LinkedListNode l1, LinkedListNode l2)
+        {
+            var s1 = new Stack<LinkedListNode>();
+            var current = l1;
+            while (current != null)
+            {
+                s1.Push(current);
+                current = current.next;
+            }
+
+            var s2 = new Stack<LinkedListNode>();
+            current = l2;
+            while (current != null)
+            {
+                s2.Push(current);
+                current = current.next;
+            }
+
+            LinkedListNode result = null;
+            while (s1.Count > 0 && s2.Count > 0)
+            {
+                if (s1.Peek() == s2.Pop())
+                {
+                    result = s1.Pop();
+                }
+            }
+
+            return result;
+        }
     }
 }

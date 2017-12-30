@@ -14,5 +14,6 @@
     <Folder Include="Chapters\" />
     <Folder Include="Tests\" />
     <Folder Include="Library\" />
+    <Folder Include="Chapters\Chapter03\" />
   </ItemGroup>
 </Project>
